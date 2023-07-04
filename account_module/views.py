@@ -21,7 +21,7 @@ class LoginView(View):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
-                # return redirect('index_page')
+                return redirect('index_page')
                 # todo : create index_page view
             else:
                 login_form.add_error('password', 'Invalid username or password.')
