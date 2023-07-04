@@ -1,16 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <!-- Add your CSS and JavaScript files here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
 </head>
 <body>
+<header>
+    <!-- Add your header content here -->
+</header>
 
-{% block content %}
+<main>
+    {% block content %}
+        <!-- Default content if not overridden by child templates -->
+    {% endblock %}
+</main>
 
-{% endblock %}
+<footer>
+    <!-- Add your footer content here -->
+</footer>
+
+<!-- Add your JavaScript files here -->
 </body>
 </html>
