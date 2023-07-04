@@ -3,7 +3,21 @@
     home page
 {% endblock %}
 {% block content %}
+<div class="p-4">
+  <ul class="list-unstyled d-flex justify-content-center mb-0">
+    <li class="mx-2">
+      <a href="{% url 'index_page' %}" class="btn btn-primary btn-lg" style="background-color: #007bff; color: #fff;">SLABS</a>
+    </li>
+    <li class="mx-2">
+      <a href="{% url 'index_page' %}" class="btn btn-primary btn-lg" style="background-color: #007bff; color: #fff;">BLOCKS</a>
+    </li>
+    <li class="mx-2">
+      <a href="{% url 'index_page' %}" class="btn btn-primary btn-lg" style="background-color: #007bff; color: #fff;">TILES</a>
+    </li>
+  </ul>
+</div>
 
 
 
 {% endblock %}
+
