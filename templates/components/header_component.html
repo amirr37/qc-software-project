@@ -1,21 +1,23 @@
 <!-- _header.html -->
-{% if user.is_authenticated %}
-    <nav class="navbar navbar-expand-lg" style="background-color: #343a40; padding: 10px 0;">
-        <div class="container">
-            <span class="navbar-brand" style="font-weight: bold; color: #ffffff;">Welcome, {{ user.username }}</span>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="border-color: rgba(255, 255, 255, 0.1);">
-                <span class="navbar-toggler-icon" style="background-image: url('path/to/your/toggle-icon.png');"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="{% url 'index_page' %}" class="nav-link" title="Logout" style="margin-left: 10px; color: #ffffff; background-color: #81bcee; border-color: #81bcee; border-radius: 5px; padding: 5px 10px;">
-                            <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i>
-                            Logout
-                        </a>
-                    </li>
-                </ul>
-            </div>
+
+<nav class="navbar navbar-expand-lg" style="background-color: #343a40; padding: 10px 0;">
+    <div class="container">
+        <span class="navbar-brand" style="font-weight: bold; color: #ffffff;">Welcome, {{ user.username }}</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+                style="border-color: rgba(255, 255, 255, 0.1);">
+            <span class="navbar-toggler-icon" style="background-image: url('path/to/your/toggle-icon.png');"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="{% url 'index_page' %}" class="nav-link" title="Logout"
+                       style="margin-left: 10px; color: #ffffff; background-color: #81bcee; border-color: #81bcee; border-radius: 5px; padding: 5px 10px;">
+                        <i class="fas fa-sign-out-alt" style="margin-right: 5px;"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
         </div>
-    </nav>
-{% endif %}
+    </div>
+</nav>
