@@ -10,8 +10,11 @@
 </head>
 <body>
 <header>
+    {% if user.is_authenticated %}
+
     <!-- Add your header content here -->
     {% include 'components/header_component.html' %}
+    {% endif %}
 </header>
 
 <main>
