@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     # internal apps
     'account_module',
     'home_module',
+
+    # external apps
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
