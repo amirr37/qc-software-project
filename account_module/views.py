@@ -1,14 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views import View
-from rest_framework import status
-from rest_framework.response import Response
+from rest_framework.request import Request
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-
-from .forms import LoginForm
+from account_module.forms import LoginForm
 
 
 # Create your views here.
@@ -41,23 +38,18 @@ class LogoutView(LoginRequiredMixin, View):
         return redirect('login')
 
 
-from django.contrib.auth import login
-
-from django.contrib.auth import authenticate, login
-from django.shortcuts import render
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
-from .forms import LoginForm
-
-
 class LoginView(APIView):
-    def get(self, request):
+    def get(self, request: Request):
+        if request.user.is_authenticated:
+            return redirect('index_page')
+            # todo : if statement doesn't work
         form = LoginForm()
         return render(request, 'account_module/login.html', {'form': form})
 
     def post(self, request):
+        if request.user.is_authenticated:
+            return redirect('index_page')
+
         form = LoginForm(request.data)
         if form.is_valid():
             username = form.cleaned_data['username']
