@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     # external apps
     'rest_framework',
     'rest_framework_simplejwt',
-    'pytest'
-
 ]
 
 MIDDLEWARE = [
