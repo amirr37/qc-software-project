@@ -43,17 +43,17 @@ class LoginView(APIView):
         if request.user.is_authenticated:
             return redirect('index_page')
             # todo : if statement doesn't work
-        form = LoginForm()
-        return render(request, 'account_module/login.html', {'form': form})
+        context = {'login_form': LoginForm()}
+        return render(request, 'account_module/login.html', context)
 
     def post(self, request):
         if request.user.is_authenticated:
             return redirect('index_page')
 
-        form = LoginForm(request.data)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
+        login_form = LoginForm(request.data)
+        if login_form.is_valid():
+            username = login_form.cleaned_data['username']
+            password = login_form.cleaned_data['password']
 
             user = authenticate(username=username, password=password)
             if user is not None:
@@ -63,6 +63,9 @@ class LoginView(APIView):
                 return redirect('index_page')
                 # return Response({'access_token': access_token})
             else:
-                return render(request, 'account_module/login.html', {'form': form, 'error': 'Invalid credentials'})
+                login_form.add_error('username', 'invalid username or password')
+                return render(request, 'account_module/login.html',
+                              {'login_form': login_form, })
         else:
-            return render(request, 'account_module/login.html', {'form': form})
+            login_form.add_error('username', 'invalid username or password')
+            return render(request, 'account_module/login.html', {'login_form': login_form})
