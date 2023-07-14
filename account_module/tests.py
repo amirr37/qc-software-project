@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase, Client
 from django.urls import reverse
 
@@ -39,3 +40,29 @@ class LoginViewTest(TestCase):
         self.assertTemplateUsed(response, 'account_module/login.html')
         self.assertFormError(response, 'login_form', 'username', 'invalid username or password')
         self.assertFalse(response.context['user'].is_authenticated)
+
+
+class LogoutViewTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.logout_url = reverse('logout')
+        self.login_url = reverse('login')
+        self.username = 'testuser'
+        self.password = 'testpassword'
+        self.email = 'test@test.com'
+        self.user = get_user_model().objects.create_user(username=self.username, password=self.password,
+                                                         email=self.email)
+
+    def test_logout_view(self):
+        # Log in the user
+        self.client.login(username=self.username, password=self.password)
+
+        # Make a GET request to the logout view
+        response = self.client.get(self.logout_url, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'account_module/login.html')
+        self.assertFalse(response.context['user'].is_authenticated)
+        self.assertRedirects(response, self.login_url)
+
+
+
