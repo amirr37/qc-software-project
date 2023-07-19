@@ -42,7 +42,7 @@ class LoginView(APIView):
     def get(self, request: Request):
         if request.user.is_authenticated:
             return redirect('index_page')
-            # todo : if statement doesn't work
+            # todo : fix if statement
         context = {'login_form': LoginForm()}
         return render(request, 'account_module/login.html', context)
 
