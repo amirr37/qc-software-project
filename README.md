@@ -13,7 +13,7 @@ Run
 clone the project and write in terminal
 
 ```bash
-python3 manage.py runserver
+python manage.py runserver
 ```
 After running the project, you can view the login page through the URL http://127.0.0.1:8000/login. Of course, if you only go to port 8000, you will be redirected to the login page.
 
