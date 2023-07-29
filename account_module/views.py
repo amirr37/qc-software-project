@@ -40,9 +40,9 @@ class LogoutView(LoginRequiredMixin, View):
 
 class LoginView(APIView):
     def get(self, request: Request):
+        # todo : fix if statement
         if request.user.is_authenticated:
             return redirect('index_page')
-            # todo : fix if statement
         context = {'login_form': LoginForm()}
         return render(request, 'account_module/login.html', context)
 

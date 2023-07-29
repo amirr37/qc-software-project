@@ -63,6 +63,3 @@ class LogoutViewTest(TestCase):
         self.assertTemplateUsed(response, 'account_module/login.html')
         self.assertFalse(response.context['user'].is_authenticated)
         self.assertRedirects(response, self.login_url)
-
-
-
